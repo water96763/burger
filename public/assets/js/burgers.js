@@ -1,9 +1,10 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
+  console.log("please work");
     $(".change-devoured").on("click", function(event) {
       var id = $(this).data("id");
       var newDevoured = $(this).data("newdevoured");
-  
+
       var newDevouredState = {
         devoured: newDevoured
       };
@@ -24,7 +25,7 @@ $(function() {
     $(".create-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
-  
+  console.log("clicked submit button")
       var newBurger = {
         name: $("#ca").val().trim(),
         devoured: $("[name=devoured]:checked").val().trim()
@@ -43,18 +44,6 @@ $(function() {
       );
     });
   
-    $(".delete-burger").on("click", function(event) {
-      var id = $(this).data("id");
-  
-      // Send the DELETE request.
-      $.ajax("/api/burger/" + id, {
-        type: "DELETE"
-      }).then(
-        function() {
-          console.log("deleted burger", id);
-          // Reload the page to get the updated list
-          location.reload();
-        }
-      );
-    });
+
+
   });
