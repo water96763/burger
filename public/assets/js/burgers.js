@@ -32,14 +32,14 @@ $(function() {
       };
   
       // Send the POST request.
-      $.ajax("/api/burgers", {
-        type: "POST",
-        data: newBurger
-      }).then(
+      $.post("/api/burgers", newBurger).then(
         function() {
           console.log("created new burger");
           // Reload the page to get the updated list
-          location.reload();
+          var row = $("<div>");
+          row.addClass("newburger");
+          row.append("<p>" + newBurger.burger_name + "</p>");
+          row.append("<p>" + newBurger.devoured + "</p>");
         }
       );
     });
